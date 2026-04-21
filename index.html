@@ -3,1059 +3,381 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AbarcaStore — Intercarreras 2026</title>
-  <meta name="description" content="Propuesta premium de uniformes deportivos para Intercarreras 2026 por AbarcaStore." />
+  <title>PIZZO TR3S × AS Media — Propuesta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0a0a0a;
-      --bg-soft:#111111;
-      --panel:rgba(255,255,255,.05);
-      --panel-2:rgba(255,255,255,.08);
-      --line:rgba(255,255,255,.12);
-      --white:#f5f5f2;
-      --muted:rgba(245,245,242,.68);
-      --muted-2:rgba(245,245,242,.48);
-      --accent:#d6ff3f;
-      --accent-2:#72f6cf;
-      --danger:#ff8f8f;
-      --shadow:0 20px 80px rgba(0,0,0,.45);
-      --radius:28px;
-      --radius-sm:18px;
-      --max:1280px;
-      --ease:cubic-bezier(.22,1,.36,1);
+      --bg:#080808;
+      --bg2:#121212;
+      --panel:#171717;
+      --panel2:#1d1d1d;
+      --text:#f6efe8;
+      --muted:#d2bdaa;
+      --line:rgba(255,255,255,.08);
+      --orange:#ea7a22;
+      --orange2:#ffb15d;
+      --cream:#f5eadf;
+      --shadow:0 24px 70px rgba(0,0,0,.38);
+      --radius:30px;
+      --max:1320px;
     }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
     body{
-      font-family:"Inter",system-ui,sans-serif;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:
-        radial-gradient(circle at 15% 20%, rgba(114,246,207,.10), transparent 28%),
-        radial-gradient(circle at 85% 10%, rgba(214,255,63,.10), transparent 22%),
-        linear-gradient(180deg,#050505 0%, #0a0a0a 35%, #0b0b0b 100%);
-      color:var(--white);
+        radial-gradient(circle at 12% 12%, rgba(234,122,34,.17), transparent 18%),
+        radial-gradient(circle at 88% 14%, rgba(234,122,34,.08), transparent 16%),
+        linear-gradient(180deg,#060606 0%,#101010 100%);
       overflow-x:hidden;
     }
-    a{text-decoration:none;color:inherit}
-    img,svg{display:block;max-width:100%}
-    button{font:inherit}
-    .container{
-      width:min(calc(100% - 32px), var(--max));
-      margin-inline:auto;
-    }
+    .app{min-height:100svh;display:flex;flex-direction:column}
+    .topbar{position:sticky;top:0;z-index:50;padding:14px 16px;background:linear-gradient(180deg,rgba(8,8,8,.88),rgba(8,8,8,.60) 70%,rgba(8,8,8,0));backdrop-filter:blur(12px)}
+    .topwrap{width:min(calc(100% - 8px),var(--max));margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .mark{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--orange),var(--orange2));color:#111;font-weight:900;box-shadow:0 12px 24px rgba(234,122,34,.28)}
+    .brandtext{min-width:0}
+    .brandtext strong{display:block;font-size:.98rem;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brandtext span{display:block;font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .stepbox{display:flex;align-items:center;gap:10px}
+    .count{font-size:.86rem;color:var(--muted);white-space:nowrap}
+    .progress{width:140px;height:6px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+    .progress span{display:block;height:100%;width:14.28%;background:linear-gradient(90deg,var(--orange),var(--orange2));box-shadow:0 0 18px rgba(234,122,34,.45);transition:width .35s ease}
 
-    .noise::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.04;
-      background-image:
-        radial-gradient(circle at 20% 20%, #fff 0.5px, transparent 0.6px),
-        radial-gradient(circle at 80% 30%, #fff 0.5px, transparent 0.6px),
-        radial-gradient(circle at 40% 80%, #fff 0.5px, transparent 0.6px);
-      background-size: 180px 180px, 220px 220px, 260px 260px;
-      z-index:2;
-    }
+    .slides{position:relative;flex:1}
+    .slide{display:none;min-height:calc(100svh - 84px);padding:22px 16px 110px;align-items:center}
+    .slide.active{display:flex}
+    .wrap{width:min(100%,var(--max));margin:0 auto}
+    .noise{position:relative}
+    .noise::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:radial-gradient(#fff .45px,transparent .45px);background-size:18px 18px}
+    .glow{position:absolute;border-radius:999px;filter:blur(70px);opacity:.17;pointer-events:none}
+    .glow.a{width:320px;height:320px;background:var(--orange);top:0;right:4%}
+    .glow.b{width:220px;height:220px;background:#ffbb74;left:2%;bottom:8%}
 
-    .topbar{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      z-index:50;
-      backdrop-filter: blur(18px);
-      background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.18));
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .topbar-inner{
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:.78rem;
-      font-weight:700;
-    }
-    .brand-mark{
-      width:38px;height:38px;border-radius:50%;
-      display:grid;place-items:center;
-      border:1px solid rgba(255,255,255,.15);
-      background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.02));
-    }
-    .brand-mark span{
-      font-size:.95rem;
-      font-weight:800;
-      color:var(--accent);
-    }
-    .nav{
-      display:flex;
-      gap:28px;
-      font-size:.9rem;
-      color:var(--muted);
-    }
-    .nav a{
-      position:relative;
-    }
-    .nav a::after{
-      content:"";
-      position:absolute;
-      left:0;bottom:-8px;
-      width:0;height:1px;
-      background:var(--white);
-      transition:width .45s var(--ease);
-    }
-    .nav a:hover::after{width:100%}
+    .hero-grid,.grid2,.service-grid,.closing,.plans{display:grid;gap:20px}
+    .hero-grid{grid-template-columns:1.08fr .92fr;align-items:stretch}
+    .grid2{grid-template-columns:1fr 1fr}
+    .service-grid,.closing{grid-template-columns:1.05fr .95fr}
+    .plans{grid-template-columns:repeat(3,1fr)}
 
-    .hero{
-      position:relative;
-      min-height:100svh;
-      display:flex;
-      align-items:flex-end;
-      padding:130px 0 56px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:34px;
-      align-items:end;
-      width:100%;
-    }
-    .hero-copy{
-      padding-bottom:18px;
-    }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      margin-bottom:24px;
-      backdrop-filter: blur(14px);
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 18px var(--accent);
-    }
-    .hero h1{
-      font-family:"Instrument Serif", serif;
-      font-weight:400;
-      font-size:clamp(3.7rem,8vw,8.5rem);
-      line-height:.9;
-      letter-spacing:-.045em;
-      max-width:10ch;
-    }
-    .hero h1 em{
-      font-style:italic;
-      color:var(--accent);
-    }
-    .hero-sub{
-      margin-top:26px;
-      max-width:60ch;
-      font-size:1.08rem;
-      line-height:1.75;
-      color:var(--muted);
-    }
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:var(--orange2);margin-bottom:14px}
+    .eyebrow::before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--orange),transparent)}
+    .hero-name{font-family:"Barlow Condensed",Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(4.3rem,11vw,9.6rem);line-height:.86;letter-spacing:-.04em;text-transform:uppercase;margin:0;color:var(--cream);text-wrap:balance}
+    .hero-name .accent{color:var(--orange2)}
+    h2{font-family:"Barlow Condensed",Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(2.4rem,5vw,4.5rem);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;margin:0 0 12px;color:var(--cream)}
+    h3{margin:0 0 10px;font-size:1.18rem;letter-spacing:-.03em}
+    p{margin:0 0 12px;color:#e7d7cb;line-height:1.65}
 
-    .hero-side{
-      position:relative;
-      min-height:620px;
-      border-radius:34px;
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
-        radial-gradient(circle at top, rgba(214,255,63,.18), transparent 38%),
-        linear-gradient(160deg, #151515 0%, #0d0d0d 65%, #080808 100%);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      isolation:isolate;
-    }
-    .hero-side::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(120deg, transparent 0 35%, rgba(255,255,255,.14) 48%, transparent 60%);
-      transform:translateX(-120%);
-      animation:shine 5.5s infinite;
-      opacity:.35;
-    }
-    .hero-side::after{
-      content:"";
-      position:absolute;
-      inset:auto -10% -18% auto;
-      width:360px;
-      height:360px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(114,246,207,.16), transparent 62%);
-      filter:blur(24px);
-      z-index:-1;
-    }
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+    .stack{display:grid;gap:16px;height:100%}
+    .quote{margin-top:18px;padding:18px 20px;border-radius:18px;background:linear-gradient(180deg,rgba(234,122,34,.14),rgba(255,255,255,.02));border:1px solid rgba(234,122,34,.24);color:#ffd9bb;font-weight:650;max-width:46ch}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#ffd6b0;font-size:.92rem}
 
-    @keyframes shine{
-      0%{transform:translateX(-120%)}
-      55%,100%{transform:translateX(140%)}
-    }
+    .stats,.pillars{display:grid;gap:14px}
+    .stats{grid-template-columns:repeat(3,1fr);margin-top:16px}
+    .stat{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+    .stat .n{font-size:1.15rem;font-weight:800;color:var(--orange2)}
+    .stat .t{margin-top:4px;color:var(--muted);font-size:.92rem}
+    .pillars{grid-template-columns:repeat(4,1fr);margin-top:16px}
+    .pillar{padding:22px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--line);position:relative;overflow:hidden}
+    .pillar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--orange),transparent)}
+    .num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(234,122,34,.14);color:var(--orange2);font-weight:800;margin-bottom:12px}
 
-    .visual-wrap{
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      padding:42px;
-    }
-    .premium-card{
-      width:min(100%, 420px);
-      aspect-ratio: 0.78 / 1;
-      border-radius:32px;
-      background:
-        radial-gradient(circle at 30% 18%, rgba(214,255,63,.18), transparent 24%),
-        linear-gradient(145deg, #0f4d47 0%, #0b2623 42%, #091110 100%);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 25px 60px rgba(0,0,0,.45);
-      position:relative;
-      overflow:hidden;
-      transform:rotate(-7deg) translateY(8px);
-      animation:floatCard 6s ease-in-out infinite;
-    }
-    .premium-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, transparent 0 18%, rgba(255,255,255,.06) 18% 19%, transparent 19% 100%),
-        linear-gradient(90deg, transparent 0 72%, rgba(214,255,63,.86) 72% 76%, transparent 76% 100%);
-      mix-blend-mode:screen;
-      opacity:.9;
-    }
-    .premium-card::after{
-      content:"FCEA";
-      position:absolute;
-      left:34px;
-      bottom:34px;
-      font-size:3.6rem;
-      font-weight:900;
-      letter-spacing:.16em;
-      color:rgba(255,255,255,.12);
-    }
-    @keyframes floatCard{
-      0%,100%{transform:rotate(-7deg) translateY(8px)}
-      50%{transform:rotate(-5deg) translateY(-10px)}
-    }
+    .bullets,.list{display:grid;gap:10px}
+    .bullet{display:flex;gap:12px;align-items:flex-start}
+    .bullet i{width:8px;height:8px;border-radius:50%;background:var(--orange);margin-top:10px;flex:0 0 auto}
+    .network{padding:14px 16px;border-radius:18px;background:rgba(234,122,34,.12);border:1px solid rgba(234,122,34,.2);color:#ffe5cf}
+    .network strong{color:#fff3e8}
 
-    .card-overlay{
-      position:absolute;
-      inset:0;
-      padding:32px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .card-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      color:rgba(255,255,255,.9);
-      font-size:.8rem;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-    }
-    .card-brand{
-      font-weight:800;
-    }
-    .card-number{
-      font-size:8rem;
-      line-height:.86;
-      font-weight:900;
-      color:#f2f2ed;
-      text-shadow:0 10px 30px rgba(0,0,0,.25);
-    }
-    .card-bottom{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:16px;
-    }
-    .card-meta{
-      color:rgba(255,255,255,.74);
-      font-size:.82rem;
-      line-height:1.5;
-      max-width:18ch;
-    }
-    .card-chip{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.06);
-      color:#fff;
-      font-size:.74rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
+    .plan{border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .plan.featured{border-color:rgba(234,122,34,.28);box-shadow:0 24px 70px rgba(234,122,34,.16)}
+    .plan-head{padding:22px;background:linear-gradient(180deg,rgba(234,122,34,.18),rgba(255,255,255,.02));border-bottom:1px solid var(--line)}
+    .kicker{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:#ffd1a9;margin-bottom:10px}
+    .plan-title{font-family:"Barlow Condensed",Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:2rem;line-height:.9;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 8px;color:var(--cream)}
+    .pricegrid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+    .pcell{padding:18px;text-align:center}
+    .pcell + .pcell{border-left:1px solid var(--line)}
+    .plabel{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:8px}
+    .pvalue{font-size:2rem;font-weight:900;color:var(--orange2);line-height:1}
+    .plan-body{padding:20px;display:flex;flex-direction:column;gap:14px}
+    .li{position:relative;padding-left:18px;color:#eaded4;line-height:1.55}
+    .li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--orange)}
+    .sub{margin-top:6px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.08);color:#cfbba9;font-size:.94rem}
 
-    .hero-metrics{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:16px;
-      margin-top:36px;
-    }
-    .metric{
-      padding:18px 18px 20px;
-      border-top:1px solid rgba(255,255,255,.18);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), transparent);
-    }
-    .metric strong{
-      display:block;
-      font-size:1.4rem;
-      margin-bottom:6px;
-      color:#fff;
-    }
-    .metric span{
-      color:var(--muted-2);
-      font-size:.92rem;
-      line-height:1.5;
-    }
+    .poster{padding:28px;border-radius:32px;background:linear-gradient(150deg,rgba(234,122,34,.22),rgba(255,255,255,.02) 42%),linear-gradient(180deg,#171717,#0e0e0e);border:1px solid rgba(234,122,34,.22);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+    .poster::after{content:"";position:absolute;right:-70px;bottom:-70px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(234,122,34,.34),transparent 66%)}
+    .poster .small{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:#ffd0a8;font-weight:800;margin-bottom:12px}
+    .poster .huge{font-family:"Barlow Condensed",Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:.84;letter-spacing:-.05em;text-transform:uppercase;max-width:7ch;margin:0 0 14px;color:var(--cream)}
+    .note{font-size:1.05rem;color:#ffe2c7;font-weight:650}
+    .tagline{font-family:"Barlow Condensed",Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(2.3rem,6vw,5rem);line-height:.88;letter-spacing:-.05em;text-transform:uppercase;max-width:9ch;margin:0 0 16px;color:var(--cream)}
+    .sign{margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:.94rem;color:var(--muted)}
 
-    section{
-      padding:110px 0;
-      position:relative;
-    }
-    .section-head{
-      max-width:840px;
-      margin-bottom:42px;
-    }
-    .section-label{
-      color:var(--accent);
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:.78rem;
-      font-weight:800;
-      margin-bottom:16px;
-    }
-    .section-head h2{
-      font-family:"Instrument Serif", serif;
-      font-weight:400;
-      font-size:clamp(2.4rem,5vw,5rem);
-      line-height:.94;
-      letter-spacing:-.04em;
-      margin-bottom:18px;
-    }
-    .section-head p{
-      color:var(--muted);
-      font-size:1.04rem;
-      line-height:1.8;
-      max-width:64ch;
-    }
+    .controls{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:55;display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:999px;background:rgba(16,16,16,.78);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .btn{border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,#1a1a1a,#121212);color:var(--text);padding:12px 16px;border-radius:999px;font-weight:700;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#111;border:0}
+    .btn:active{transform:translateY(1px)}
 
-    .experience-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:26px;
-      align-items:stretch;
+    @media (max-width:1100px){
+      .hero-grid,.grid2,.service-grid,.closing,.plans,.pillars,.stats{grid-template-columns:1fr}
     }
-    .panel{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:30px;
-      padding:32px;
-      box-shadow:var(--shadow);
-    }
-    .panel.dark{
-      background:
-        radial-gradient(circle at top left, rgba(114,246,207,.08), transparent 30%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-    }
-    .lead-big{
-      font-family:"Instrument Serif", serif;
-      font-size:clamp(2rem,3vw,3.1rem);
-      line-height:1;
-      letter-spacing:-.03em;
-      margin-bottom:18px;
-    }
-    .body{
-      color:var(--muted);
-      line-height:1.85;
-      font-size:1rem;
-    }
-
-    .stack{
-      display:grid;
-      gap:16px;
-      margin-top:28px;
-    }
-    .stack-item{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:14px;
-      align-items:start;
-      padding:18px 0;
-      border-top:1px solid rgba(255,255,255,.10);
-    }
-    .stack-item:first-child{border-top:none;padding-top:0}
-    .stack-num{
-      font-size:.85rem;
-      color:var(--accent);
-      font-weight:800;
-      letter-spacing:.12em;
-      padding-top:4px;
-    }
-    .stack-item h3{
-      font-size:1.05rem;
-      margin-bottom:6px;
-    }
-    .stack-item p{
-      color:var(--muted);
-      line-height:1.7;
-      font-size:.97rem;
-    }
-
-    .quote-box{
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:100%;
-      overflow:hidden;
-      position:relative;
-    }
-    .quote-box::before{
-      content:"";
-      position:absolute;
-      inset:auto -40px -40px auto;
-      width:220px;height:220px;border-radius:50%;
-      background:radial-gradient(circle, rgba(214,255,63,.16), transparent 65%);
-      filter:blur(12px);
-    }
-    .quote-mark{
-      font-family:"Instrument Serif", serif;
-      font-size:7rem;
-      line-height:.7;
-      color:rgba(255,255,255,.12);
-    }
-    .quote-text{
-      font-family:"Instrument Serif", serif;
-      font-size:clamp(1.7rem,3vw,3rem);
-      line-height:1.02;
-      max-width:12ch;
-      letter-spacing:-.03em;
-    }
-    .quote-sub{
-      color:var(--muted);
-      max-width:34ch;
-      line-height:1.8;
-      margin-top:18px;
-    }
-
-    .capsules{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:18px;
-      margin-top:34px;
-    }
-    .capsule{
-      min-height:280px;
-      padding:24px;
-      border-radius:26px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.10);
-      position:relative;
-      overflow:hidden;
-      transition:transform .6s var(--ease), border-color .4s var(--ease), background .4s var(--ease);
-    }
-    .capsule:hover{
-      transform:translateY(-8px);
-      border-color:rgba(214,255,63,.32);
-      background:linear-gradient(180deg, rgba(214,255,63,.08), rgba(255,255,255,.04));
-    }
-    .capsule .cap-index{
-      color:var(--accent);
-      font-size:.76rem;
-      font-weight:800;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      margin-bottom:18px;
-    }
-    .capsule h3{
-      font-size:1.4rem;
-      margin-bottom:12px;
-    }
-    .capsule p{
-      color:var(--muted);
-      line-height:1.75;
-      font-size:.98rem;
-    }
-    .capsule ul{
-      list-style:none;
-      margin-top:18px;
-      display:grid;
-      gap:12px;
-    }
-    .capsule li{
-      color:rgba(245,245,242,.82);
-      font-size:.95rem;
-      line-height:1.65;
-      padding-left:18px;
-      position:relative;
-    }
-    .capsule li::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:.7em;
-      width:7px;height:7px;border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 14px rgba(214,255,63,.45);
-    }
-
-    .cinema{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:24px;
-      align-items:stretch;
-    }
-    .visual-panel{
-      min-height:540px;
-      border-radius:30px;
-      overflow:hidden;
-      position:relative;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)),
-        radial-gradient(circle at 50% 20%, rgba(114,246,207,.18), transparent 24%),
-        linear-gradient(145deg, #121212, #090909);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:var(--shadow);
-    }
-    .visual-panel .rings,
-    .visual-panel .rings::before,
-    .visual-panel .rings::after{
-      position:absolute;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:50%;
-      content:"";
-    }
-    .visual-panel .rings{
-      width:380px;height:380px;left:50%;top:50%;
-      transform:translate(-50%,-50%);
-      animation:spinSlow 18s linear infinite;
-    }
-    .visual-panel .rings::before{
-      inset:26px;
-      animation:spinSlowReverse 14s linear infinite;
-    }
-    .visual-panel .rings::after{
-      inset:58px;
-      animation:spinSlow 10s linear infinite;
-    }
-    @keyframes spinSlow{to{transform:translate(-50%,-50%) rotate(360deg)}}
-    @keyframes spinSlowReverse{to{transform:rotate(-360deg)}}
-
-    .visual-center{
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      text-align:center;
-      padding:30px;
-    }
-    .visual-center strong{
-      display:block;
-      font-size:clamp(3rem,7vw,6rem);
-      line-height:.9;
-      letter-spacing:-.05em;
-      margin-bottom:8px;
-    }
-    .visual-center span{
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.22em;
-      font-size:.76rem;
-    }
-
-    .timeline{
-      display:grid;
-      gap:16px;
-    }
-    .timeline-item{
-      padding:22px 24px;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.10);
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      transition:transform .5s var(--ease), border-color .4s var(--ease);
-    }
-    .timeline-item:hover{
-      transform:translateX(8px);
-      border-color:rgba(114,246,207,.30);
-    }
-    .timeline-item small{
-      display:block;
-      color:var(--accent);
-      text-transform:uppercase;
-      letter-spacing:.13em;
-      font-weight:800;
-      margin-bottom:10px;
-    }
-    .timeline-item h3{
-      font-size:1.15rem;
-      margin-bottom:8px;
-    }
-    .timeline-item p{
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .price-section .section-head{
-      margin-bottom:24px;
-    }
-    .price-shell{
-      display:grid;
-      grid-template-columns: 1fr .8fr;
-      gap:24px;
-      align-items:start;
-    }
-    .price-table{
-      width:100%;
-      border-collapse:collapse;
-      overflow:hidden;
-      border-radius:26px;
-      border:1px solid rgba(255,255,255,.10);
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow:var(--shadow);
-    }
-    .price-table th,
-    .price-table td{
-      text-align:left;
-      padding:22px 24px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .price-table th{
-      font-size:.8rem;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      color:var(--muted-2);
-      font-weight:700;
-    }
-    .price-table td{
-      font-size:1rem;
-      color:rgba(245,245,242,.92);
-    }
-    .price-table tr:last-child td{border-bottom:none}
-    .price-table .money{
-      color:var(--accent);
-      font-weight:800;
-      font-size:1.06rem;
-    }
-    .side-note{
-      padding:28px;
-      border-radius:26px;
-      border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(circle at top left, rgba(214,255,63,.12), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
-      box-shadow:var(--shadow);
-    }
-    .side-note h3{
-      font-size:1.5rem;
-      margin-bottom:14px;
-    }
-    .side-note p{
-      color:var(--muted);
-      line-height:1.8;
-    }
-    .side-note ul{
-      list-style:none;
-      margin-top:18px;
-      display:grid;
-      gap:12px;
-    }
-    .side-note li{
-      color:rgba(245,245,242,.84);
-      line-height:1.6;
-      padding-left:18px;
-      position:relative;
-    }
-    .side-note li::before{
-      content:"";
-      position:absolute;
-      left:0; top:.72em;
-      width:6px;height:6px;border-radius:50%;
-      background:var(--accent-2);
-      box-shadow:0 0 14px rgba(114,246,207,.42);
-    }
-
-    .final-block{
-      padding:42px;
-      border-radius:34px;
-      background:
-        radial-gradient(circle at top right, rgba(214,255,63,.12), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:var(--shadow);
-    }
-    .final-block h2{
-      font-family:"Instrument Serif", serif;
-      font-size:clamp(2.4rem,4vw,4.4rem);
-      line-height:.95;
-      letter-spacing:-.04em;
-      max-width:11ch;
-      margin-bottom:18px;
-    }
-    .final-block p{
-      max-width:62ch;
-      color:var(--muted);
-      line-height:1.9;
-      font-size:1.04rem;
-    }
-
-    .fade-up{
-      opacity:0;
-      transform:translateY(24px);
-      transition:opacity .9s var(--ease), transform .9s var(--ease);
-      will-change:transform, opacity;
-    }
-    .fade-up.is-visible{
-      opacity:1;
-      transform:none;
-    }
-
-    @media (max-width: 1080px){
-      .hero-grid,
-      .experience-grid,
-      .cinema,
-      .price-shell{
-        grid-template-columns:1fr;
-      }
-      .hero-side{min-height:520px}
-      .capsules{grid-template-columns:1fr}
-      .hero h1{max-width:11ch}
-    }
-
-    @media (max-width: 760px){
-      .nav{display:none}
-      .hero{padding-top:120px;min-height:auto}
-      .hero-side{min-height:420px}
-      .hero-metrics{grid-template-columns:1fr}
-      section{padding:84px 0}
-      .panel,.final-block,.side-note{padding:24px}
-      .price-table th,.price-table td{padding:18px 16px}
-      .premium-card{
-        width:min(100%,320px);
-      }
-      .card-number{font-size:6rem}
-      .quote-text{max-width:none}
+    @media (max-width:720px){
+      .topwrap{align-items:flex-start}
+      .progress{width:88px}
+      .slide{padding:16px 14px 108px;min-height:calc(100svh - 76px)}
+      .panel,.plan,.poster,.pillar{border-radius:24px}
+      .plan-title{font-size:1.8rem}
+      .hero-name{font-size:4rem}
+      .poster .huge,.tagline{max-width:none}
+      .controls{width:calc(100% - 20px);justify-content:center}
+      .btn{flex:1;text-align:center;padding:12px 10px;font-size:.95rem}
     }
   </style>
 </head>
-<body class="noise">
-
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-mark"><span>A</span></div>
-        <div>AbarcaStore / Intercarreras 2026</div>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topwrap">
+        <div class="brand">
+          <div class="mark">AS</div>
+          <div class="brandtext">
+            <strong>PIZZO TR3S × AS Media</strong>
+            <span>Propuesta visual · funcional en celular y PC</span>
+          </div>
+        </div>
+        <div class="stepbox">
+          <div class="count" id="count">01 / 07</div>
+          <div class="progress"><span id="bar"></span></div>
+        </div>
       </div>
-      <nav class="nav">
-        <a href="#vision">Visión</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#precio">Inversión</a>
-      </nav>
+    </header>
+
+    <main class="slides noise" id="slides">
+      <section class="slide active">
+        <div class="glow a"></div><div class="glow b"></div>
+        <div class="wrap hero-grid">
+          <div class="panel">
+            <div class="eyebrow">Propuesta exclusiva</div>
+            <h1 class="hero-name">PIZZO <span class="accent">TR3S</span></h1>
+            <p>Una propuesta de contenido digital pensada para convertir su nueva etapa en una historia que la gente quiera volver a mirar, seguir y comprar.</p>
+            <p>No se trata de publicar más. Se trata de hacer que la ciudad vuelva a sentir algo por la marca.</p>
+            <div class="quote">El objetivo no es llenar redes. El objetivo es reconstruir conexión, confianza y deseo de volver.</div>
+          </div>
+          <div class="stack">
+            <div class="panel">
+              <h3>Qué es esto</h3>
+              <p>Una estrategia narrativa mensual para que Pizzo Tr3s vuelva a ocupar un lugar emocional en la mente de sus clientes.</p>
+            </div>
+            <div class="panel">
+              <h3>Cómo se ve</h3>
+              <div class="chips">
+                <span class="chip">Oscuro + naranja</span>
+                <span class="chip">Look premium</span>
+                <span class="chip">Visual y claro</span>
+                <span class="chip">Fácil de presentar</span>
+              </div>
+            </div>
+            <div class="panel">
+              <h3>Para quién</h3>
+              <p>Hecho específicamente para Pizzo Tr3s, entendiendo su contexto y la oportunidad real que tienen de volver con fuerza.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="wrap grid2">
+          <div class="panel">
+            <div class="eyebrow">Contexto</div>
+            <h2>Una propuesta pensada para ustedes</h2>
+            <p>Pizzo Tr3s no es una marca nueva tratando de llamar la atención. Es una marca que ya logró algo mucho más difícil: estar en la memoria de la gente.</p>
+            <p>Su historia demuestra que hubo una etapa de crecimiento real, una comunidad que respondió, una identidad de producto clara y una recordación que todavía existe.</p>
+          </div>
+          <div class="panel">
+            <h3>La oportunidad real</h3>
+            <p>El reto hoy no es simplemente “hacer contenido”; el reto es reactivar conexión, confianza y el deseo de volver. Por eso esta propuesta no está construida como un paquete genérico de posts, sino como una estrategia narrativa mensual.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="wrap grid2">
+          <div class="panel">
+            <div class="eyebrow">Caso real</div>
+            <h2>La inspiración: Domino’s 2009</h2>
+            <p>Uno de los casos más poderosos de recuperación de marca en restauración fue Domino’s Pizza en 2009. La marca decidió enfrentar públicamente las críticas a su producto y construir su relanzamiento desde la honestidad, mostrando cambios reales en lugar de ocultar el problema.</p>
+          </div>
+          <div class="panel">
+            <h3>La lección</h3>
+            <p>Ese enfoque no se basó en “verse mejor”, sino en recuperar credibilidad. Cuando una marca ya fue querida, el contenido más poderoso no es el más producido, sino el que hace sentir que esta vez hay verdad, oficio y dirección.</p>
+            <div class="stats">
+              <div class="stat"><div class="n">Honestidad</div><div class="t">La base de un regreso creíble</div></div>
+              <div class="stat"><div class="n">Oficio</div><div class="t">La prueba de calidad</div></div>
+              <div class="stat"><div class="n">Narrativa</div><div class="t">Lo que hace volver</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="wrap">
+          <div class="panel">
+            <div class="eyebrow">Concepto rector</div>
+            <h2>Los cuatro ángulos del sistema</h2>
+            <p>La idea no es únicamente vender pizza. Es narrar el regreso de una marca que la ciudad ya conoció y que hoy puede volver con una identidad más sólida y auténtica.</p>
+            <div class="pillars">
+              <article class="pillar"><div class="num">1</div><h3>Regreso</h3><p>Recuperar confianza mostrando honestidad sobre la nueva etapa.</p></article>
+              <article class="pillar"><div class="num">2</div><h3>Oficio</h3><p>Demostrar calidad a través del proceso: masa madre, ingredientes y preparación.</p></article>
+              <article class="pillar"><div class="num">3</div><h3>Personajes</h3><p>Humanizar la marca poniendo cara y nombre a quien hace la pizza.</p></article>
+              <article class="pillar"><div class="num">4</div><h3>Exclusividad</h3><p>Convertir a los seguidores más fieles en una comunidad activa.</p></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="wrap service-grid">
+          <div class="panel">
+            <div class="eyebrow">Cobertura mensual</div>
+            <h2>Contenido para todo el mes</h2>
+            <p>Todos los planes están diseñados para que Pizzo Tr3s tenga contenido suficiente para mantener activas sus redes sociales durante todo el mes, sin improvisar publicaciones ni preocuparse por qué subir cada día.</p>
+            <div class="bullets">
+              <div class="bullet"><i></i><div><strong>Plan Básico:</strong> producción de contenido entregado listo para publicar.</div></div>
+              <div class="bullet"><i></i><div><strong>Plan Estándar:</strong> producción + manejo completo de 1 red social (Instagram o TikTok).</div></div>
+              <div class="bullet"><i></i><div><strong>Plan Premium:</strong> producción + manejo completo de Instagram y TikTok.</div></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Manejo de redes sociales</h3>
+            <p>El manejo de redes incluye programación de publicaciones, respuesta a comentarios, gestión de comunidad y reporte mensual de resultados. La idea es que Pizzo Tr3s no solo reciba piezas visuales, sino un sistema de comunicación completo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="wrap">
+          <div class="panel" style="margin-bottom:18px;">
+            <div class="eyebrow">Planes mensuales</div>
+            <h2>Precio de entrada + esquema regular</h2>
+            <p>El primer mes funciona como etapa de entrada con precio preferencial, para que Pizzo Tr3s compruebe el nivel de trabajo y la calidad de ejecución antes de entrar al esquema regular.</p>
+          </div>
+          <div class="plans">
+            <article class="plan">
+              <div class="plan-head"><div class="kicker">Plan básico</div><div class="plan-title">La Chispa</div><p>Para encender el regreso.</p></div>
+              <div class="pricegrid"><div class="pcell"><div class="plabel">Mes 1</div><div class="pvalue">$150</div></div><div class="pcell"><div class="plabel">Desde mes 2</div><div class="pvalue">$250</div></div></div>
+              <div class="plan-body">
+                <div class="network"><strong>Redes sociales:</strong> entrega de contenido listo para publicar, sin manejo de redes.</div>
+                <div class="list">
+                  <div class="li">3 reels mensuales, enfocados en regreso honesto y proceso/oficio.</div>
+                  <div class="li">17 fotos editadas y listas para publicar.<div class="sub">10 fotos de producto · 4 fotos de ambiente · 3 fotos de equipo o servicio</div></div>
+                  <div class="li">Copywriting de captions con narrativa estratégica.</div>
+                  <div class="li">1 historia de personaje del equipo.</div>
+                  <div class="li">Reporte mensual básico de métricas.</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="plan featured">
+              <div class="plan-head"><div class="kicker">Plan estándar</div><div class="plan-title">La Identidad</div><p>Para construir quiénes son.</p></div>
+              <div class="pricegrid"><div class="pcell"><div class="plabel">Mes 1</div><div class="pvalue">$230</div></div><div class="pcell"><div class="plabel">Desde mes 2</div><div class="pvalue">$350</div></div></div>
+              <div class="plan-body">
+                <div class="network"><strong>Redes sociales:</strong> manejo completo de 1 red social (Instagram o TikTok).</div>
+                <div class="list">
+                  <div class="li">5 reels mensuales: regreso, oficio, personaje y comunidad.</div>
+                  <div class="li">22 fotos editadas y listas para publicar.<div class="sub">12 fotos de producto · 5 fotos de ambiente/local · 5 fotos de equipo, proceso y servicio</div></div>
+                  <div class="li">Captions y estrategia narrativa del mes.</div>
+                  <div class="li">2 historias de personaje.</div>
+                  <div class="li">1 activación de exclusividad para clientes fieles.</div>
+                  <div class="li">Programación, gestión de comunidad y reporte mensual.</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="plan">
+              <div class="plan-head"><div class="kicker">Plan premium</div><div class="plan-title">El Universo</div><p>Para construir una marca que la gente ame de verdad.</p></div>
+              <div class="pricegrid"><div class="pcell"><div class="plabel">Mes 1</div><div class="pvalue">$320</div></div><div class="pcell"><div class="plabel">Desde mes 2</div><div class="pvalue">$499</div></div></div>
+              <div class="plan-body">
+                <div class="network"><strong>Redes sociales:</strong> manejo completo de Instagram y TikTok.</div>
+                <div class="list">
+                  <div class="li">6 reels mensuales con todos los ángulos cubiertos.</div>
+                  <div class="li">30 fotos editadas y listas para publicar.<div class="sub">15 fotos de producto · 7 fotos de ambiente/local · 8 fotos de equipo, proceso y lifestyle</div></div>
+                  <div class="li">Estrategia editorial mensual completa + captions.</div>
+                  <div class="li">Serie de personajes.</div>
+                  <div class="li">Activación y gestión de comunidad e inner circle.</div>
+                  <div class="li">Coordinación con 1 microinfluencer local de Cuenca.</div>
+                  <div class="li">Programación, gestión de ambas redes + reunión estratégica mensual.</div>
+                  <div class="li">Reporte mensual detallado.</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="wrap closing">
+          <div class="poster">
+            <div class="small">Lógica de inversión</div>
+            <div class="huge">Casi como un sueldo básico</div>
+            <p>El plan premium está planteado intencionalmente en un valor cercano al salario básico unificado en Ecuador. Por ese monto, Pizzo Tr3s accede a estrategia, producción audiovisual, fotografía, manejo de dos redes sociales y acompañamiento mensual.</p>
+          </div>
+          <div class="panel">
+            <div class="eyebrow">Para cerrar</div>
+            <div class="tagline">No necesitan más contenido</div>
+            <p>Necesitan una narrativa con intención, una estética coherente con su identidad y un sistema de comunicación que haga que la gente vuelva a sentir algo cuando vea la marca.</p>
+            <p>Un solo empleado de marketing no cubriría ni la mitad de estas responsabilidades. La propuesta permite que la inversión se sienta accesible sin sacrificar estándar profesional.</p>
+            <p>Todos los planes están pensados para cubrir el local de Cuenca. Si se requiere cobertura en Quito, se puede trabajar con viáticos cubiertos y ajuste según desplazamiento.</p>
+            <p class="note">Nosotros nos encargamos de todo lo digital. Ustedes se encargan de hacer la mejor pizza de la ciudad.</p>
+            <div class="sign">AS Media · Propuesta desarrollada exclusivamente para Pizzo Tr3s · Abril 2026</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="controls">
+      <button class="btn" id="prev">← Anterior</button>
+      <button class="btn primary" id="next">Siguiente →</button>
     </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy fade-up">
-          <div class="kicker"><span class="dot"></span> Propuesta oficial para FCEA</div>
-          <h1>La carrera no solo entra a jugar. <em>Entra a imponer presencia.</em></h1>
-          <p class="hero-sub">
-            Intercarreras 2026 no se gana solo en la cancha. También se gana en identidad, imagen, narrativa y percepción. AbarcaStore construye una experiencia completa para que cada carrera llegue con uniforme, contenido y presencia visual al nivel de una marca deportiva seria.
-          </p>
-
-          <div class="hero-metrics">
-            <div class="metric">
-              <strong>Diseño + contenido</strong>
-              <span>No se entrega solo una prenda. Se entrega una presentación completa lista para generar impacto.</span>
-            </div>
-            <div class="metric">
-              <strong>Producción premium</strong>
-              <span>Microfibra, full color, personalización completa y look de equipo con carácter real.</span>
-            </div>
-            <div class="metric">
-              <strong>Gestión sin fricción</strong>
-              <span>Mockup, tallaje, aprobación y entrega ordenada para que la directiva no se complique.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-side fade-up">
-          <div class="visual-wrap">
-            <div class="premium-card">
-              <div class="card-overlay">
-                <div class="card-top">
-                  <div class="card-brand">AbarcaStore</div>
-                  <div>2026</div>
-                </div>
-                <div class="card-number">10</div>
-                <div class="card-bottom">
-                  <div class="card-meta">
-                    Uniforme conceptual premium<br>
-                    Dirección visual para Intercarreras
-                  </div>
-                  <div class="card-chip">Official drop</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="vision">
-      <div class="container">
-        <div class="experience-grid">
-          <div class="panel dark fade-up">
-            <div class="section-label">La idea</div>
-            <h2 class="lead-big">Esto no se presenta como una simple compra. Se presenta como una experiencia de equipo.</h2>
-            <p class="body">
-              La diferencia entre una camiseta cualquiera y una propuesta seria está en cómo se hace sentir a la carrera. Aquí no se ofrece solo producción textil. Se ofrece identidad visual, hype previo, orden de ejecución, contenido listo para publicar y una imagen que eleva la percepción del equipo desde antes del primer partido.
-            </p>
-
-            <div class="stack">
-              <div class="stack-item">
-                <div class="stack-num">01</div>
-                <div>
-                  <h3>Identidad que se nota</h3>
-                  <p>Diseño completamente personalizado con colores, logos, nombres, números y sponsors sin limitar el look final.</p>
-                </div>
-              </div>
-              <div class="stack-item">
-                <div class="stack-num">02</div>
-                <div>
-                  <h3>Presentación que genera expectativa</h3>
-                  <p>Render 3D, mockup previo y piezas listas para mostrar el uniforme antes de producirlo y antes de debutarlo.</p>
-                </div>
-              </div>
-              <div class="stack-item">
-                <div class="stack-num">03</div>
-                <div>
-                  <h3>Experiencia cerrada de inicio a fin</h3>
-                  <p>Sesión de fotos, contenido para redes, formulario de tallas, guía real y entrega organizada por nombre y carrera.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel quote-box fade-up">
-            <div class="quote-mark">“</div>
-            <div>
-              <div class="quote-text">Tu carrera tiene que verse como si ya supiera competir antes de entrar al campo.</div>
-              <p class="quote-sub">
-                Ese es el punto de una propuesta premium: construir una imagen que transmita seguridad, profesionalismo y pertenencia, no solo cumplir con una camiseta más.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experiencia">
-      <div class="container">
-        <div class="section-head fade-up">
-          <div class="section-label">Qué recibe la carrera</div>
-          <h2>Una entrega más cercana a una marca deportiva que a un proveedor tradicional.</h2>
-          <p>
-            La propuesta mezcla producto, dirección visual y ejecución. Por eso se percibe mejor, se vende mejor dentro de cada carrera y genera más valor desde el primer contacto.
-          </p>
-        </div>
-
-        <div class="capsules">
-          <article class="capsule fade-up">
-            <div class="cap-index">Producto</div>
-            <h3>Uniforme con look serio</h3>
-            <p>Base textil técnica, ligera y transpirable, construida para verse sólida tanto en cancha como en fotografía.</p>
-            <ul>
-              <li>Tela 100% microfibra</li>
-              <li>Diseño 100% personalizado</li>
-              <li>Nombre y número incluidos</li>
-              <li>Sponsors ilimitados sin costo extra</li>
-              <li>Camiseta de arquero al mismo precio</li>
-              <li>Impresión full color sin limitar creatividad</li>
-            </ul>
-          </article>
-
-          <article class="capsule fade-up">
-            <div class="cap-index">Contenido</div>
-            <h3>Campaña visual para tu carrera</h3>
-            <p>La experiencia no termina cuando sale la prenda: comienza cuando la carrera la puede mostrar bien.</p>
-            <ul>
-              <li>Sesión de fotos profesional</li>
-              <li>Render 3D antes de producción</li>
-              <li>Arte listo para publicar en redes</li>
-              <li>Participación en reel oficial del Intercarreras</li>
-              <li>Entrega de material editado en carpeta digital</li>
-            </ul>
-          </article>
-
-          <article class="capsule fade-up">
-            <div class="cap-index">Gestión</div>
-            <h3>Flujo simple y sin caos</h3>
-            <p>Todo está pensado para que la directiva coordine rápido, apruebe con seguridad y reciba con orden.</p>
-            <ul>
-              <li>Mockup digital previo a producción</li>
-              <li>Ajustes ilimitados antes de aprobar</li>
-              <li>Formulario de tallas listo para enviar</li>
-              <li>Guía de medidas reales</li>
-              <li>Entrega organizada por nombre y carrera</li>
-              <li>Garantía por defectos de fábrica</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="proceso">
-      <div class="container cinema">
-        <div class="visual-panel fade-up">
-          <div class="rings"></div>
-          <div class="visual-center">
-            <div>
-              <strong>03</strong>
-              <span>capas de valor</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-item fade-up">
-            <small>Fase 01</small>
-            <h3>Se define la identidad</h3>
-            <p>Se aterrizan referencias, colores, sponsors y estilo general para diseñar una camiseta con carácter real de carrera.</p>
-          </div>
-          <div class="timeline-item fade-up">
-            <small>Fase 02</small>
-            <h3>Se aprueba con seguridad</h3>
-            <p>Antes de producir, la carrera recibe mockup y ajustes necesarios para tener claridad total sobre el resultado final.</p>
-          </div>
-          <div class="timeline-item fade-up">
-            <small>Fase 03</small>
-            <h3>Se activa la experiencia completa</h3>
-            <p>Producción, sesión de fotos, entrega de contenido y organización final para que la carrera llegue lista a competir y mostrarse.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="precio" class="price-section">
-      <div class="container">
-        <div class="section-head fade-up">
-          <div class="section-label">Inversión</div>
-          <h2>Primero se construye el valor. Después se entiende el precio.</h2>
-          <p>
-            La inversión incluye producto, personalización, visualización previa, contenido y soporte de gestión. Por eso no compite como una camiseta suelta, sino como una propuesta integral.
-          </p>
-        </div>
-
-        <div class="price-shell">
-          <table class="price-table fade-up">
-            <thead>
-              <tr>
-                <th>Producto</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Camiseta tallas 36 a 42</td>
-                <td class="money">$7.99</td>
-              </tr>
-              <tr>
-                <td>Talla 44 en adelante</td>
-                <td class="money">+$0.99 por talla extra</td>
-              </tr>
-              <tr>
-                <td>Camiseta talla 48 (4XL)</td>
-                <td class="money">$10.99</td>
-              </tr>
-              <tr>
-                <td>Buzo deportivo</td>
-                <td class="money">+$1.99 sobre camiseta</td>
-              </tr>
-              <tr>
-                <td>Camiseta tipo polo</td>
-                <td class="money">+$1.99 sobre camiseta</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="side-note fade-up">
-            <h3>Qué ya está incluido</h3>
-            <p>
-              El precio contempla diseño, nombres, números, logos, sponsors, render 3D, sesión de fotos y contenido digital. No se maneja como una cotización inflada por extras ocultos.
-            </p>
-            <ul>
-              <li>50% de anticipo para iniciar producción</li>
-              <li>50% restante contra entrega</li>
-              <li>Pedidos fuera de fecha no garantizan entrega para inauguración</li>
-              <li>Una vez aprobado el diseño final, no se realizan cambios</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="final-block fade-up">
-          <h2>La meta no es solo entregar uniforme. Es hacer que una carrera se vea lista para competir de verdad.</h2>
-          <p>
-            AbarcaStore se plantea como una opción oficial para Intercarreras 2026 con una lógica clara: menos improvisación, más identidad, mejor percepción y una ejecución visual que haga que cada carrera llegue al evento con más presencia, más orden y más impacto.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
+  </div>
 
   <script>
-    const items = document.querySelectorAll('.fade-up');
+    const slides = [...document.querySelectorAll('.slide')];
+    const count = document.getElementById('count');
+    const bar = document.getElementById('bar');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let current = 0;
 
-    const reveal = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('is-visible');
-          reveal.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.18 });
+    function pad(n){return String(n).padStart(2,'0')}
+    function render(){
+      slides.forEach((s,i)=>s.classList.toggle('active', i===current));
+      count.textContent = `${pad(current+1)} / ${pad(slides.length)}`;
+      bar.style.width = `${((current+1)/slides.length)*100}%`;
+    }
+    function go(i){current=(i+slides.length)%slides.length;render()}
+    prev.addEventListener('click',()=>go(current-1));
+    next.addEventListener('click',()=>go(current+1));
 
-    items.forEach((item, i)=>{
-      item.style.transitionDelay = `${Math.min(i * 70, 420)}ms`;
-      reveal.observe(item);
+    window.addEventListener('keydown',(e)=>{
+      if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(current+1)}
+      if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(current-1)}
     });
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(prefersReducedMotion){
-      items.forEach(el => el.classList.add('is-visible'));
-    }
+    let startX = 0, startY = 0;
+    window.addEventListener('touchstart',e=>{
+      const t=e.changedTouches[0]; startX=t.clientX; startY=t.clientY;
+    },{passive:true});
+    window.addEventListener('touchend',e=>{
+      const t=e.changedTouches[0];
+      const dx=t.clientX-startX; const dy=t.clientY-startY;
+      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){
+        if(dx<0) go(current+1); else go(current-1);
+      }
+    },{passive:true});
+
+    render();
   </script>
 </body>
 </html>
